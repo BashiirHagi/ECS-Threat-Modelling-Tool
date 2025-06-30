@@ -32,9 +32,9 @@ variable "public_subnets" {
   description = "The CIDR blocks for the public subnets"
   type        = list(string)
 }
-variable "private_subnets" {
-  description = "The CIDR blocks for the private subnets"
+variable "public_subnets_ids" {
   type        = list(string)
+  description = "List of public subnet IDs for the container"
 }
 
 //ECS
@@ -62,9 +62,4 @@ variable "container_port" {
 variable "vpc_id" {
   type        = string
   description = "VPC ID"
-}
-
-variable "public_subnets_ids" {
-  type        = list(string)
-  description = "List of private subnet IDs for the container"
 }

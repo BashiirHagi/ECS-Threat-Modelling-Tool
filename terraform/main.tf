@@ -3,11 +3,11 @@ module "vpc" {
   aws_region         = var.aws_region
   vpc_cidr           = var.vpc_cidr
   public_subnets     = var.public_subnets
-  private_subnets    = var.private_subnets
   availability_zones = var.availability_zones
   tags               = var.tags
   s3_logging_bucket  = var.s3_logging_bucket
   environment        = var.environment
+  public_subnets_ids = var.public_subnets_ids
 }
 
 module "ecs" {
@@ -19,14 +19,12 @@ module "ecs" {
   container_port  = var.container_port
 
   vpc_id          = var.vpc_id
-  public_subnets_ids = var.private_subnets_ids
+  public_subnets_ids = var.public_subnets_ids
 
   tags = {
     Environment = var.environment
   }
 }
-
-//root module and calling module - child module and calling module 
 
 # module "ecr" {
 #   source = "./modules/ecr"

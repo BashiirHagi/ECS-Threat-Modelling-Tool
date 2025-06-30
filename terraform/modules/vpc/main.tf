@@ -5,7 +5,7 @@ resource "aws_vpc" "vpc_ecs" {
     Environment = var.environment
   }
 }
-resource "aws_subnet" "public_subnet" {
+resource "aws_subnet" "public_subnet" { 
   for_each          = { for index, cidr in var.public_subnets : index => cidr } 
   vpc_id            = aws_vpc.vpc_ecs.id
   availability_zone = element(var.availability_zones, each.key)
@@ -17,18 +17,18 @@ resource "aws_subnet" "public_subnet" {
     }
   )
 }
-resource "aws_subnet" "private_subnet" {
-  for_each          = { for index, cidr in var.private_subnets : index => cidr } //
-  vpc_id            = aws_vpc.vpc_ecs.id
-  availability_zone = element(var.availability_zones, each.key)
-  cidr_block        = each.value
-  tags = merge(
-    var.tags,
-    {
-      Name = "${var.environment}-private-subnet-${each.key}",
-    }
-  )
-}
+# resource "aws_subnet" "private_subnet" {
+#   for_each          = { for index, cidr in var.public_subnets : index => cidr } //
+#   vpc_id            = aws_vpc.vpc_ecs.id
+#   availability_zone = element(var.availability_zones, each.key)
+#   cidr_block        = each.value
+#   tags = merge(
+#     var.tags,
+#     {
+#       Name = "${var.environment}-private-subnet-${each.key}",
+#     }
+#   )
+# }
 ## public route table
 resource "aws_route_table" "public_route_table" {
   vpc_id = aws_vpc.vpc_ecs.id
