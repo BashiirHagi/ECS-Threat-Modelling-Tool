@@ -1,3 +1,8 @@
+variable "vpc_id" {
+  type        = string
+  description = "VPC ID"
+}
+
 variable "loadbalancer_name" {
   description = "The name of the load balancer"
   type        = string

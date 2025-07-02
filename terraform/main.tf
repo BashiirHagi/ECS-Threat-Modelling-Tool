@@ -28,6 +28,7 @@ module "ecs" {
 
 module "alb" {
   source                                    = "./modules/alb"
+  vpc_id                                    = var.vpc_id
   loadbalancer_name                         = var.loadbalancer_name
   loadbalancer_internal                     = var.loadbalancer_internal
   loadbalancer_type                         = var.loadbalancer_type

@@ -100,7 +100,7 @@ variable "loadbalancer_listener_default_action_type" {
   default     = "forward"
 }
 
-variable "certificate_arn" {
-  description = "ARN of the ACM certificate for HTTPS listener"
-  type        = string
-}
+# variable "certificate_arn" {
+#   description = "ARN of the ACM certificate for HTTPS listener"
+#   type        = string
+# }
