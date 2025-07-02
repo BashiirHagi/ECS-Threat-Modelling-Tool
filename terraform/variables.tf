@@ -19,7 +19,7 @@ variable "s3_logging_bucket" {
   description = "S3 bucket to store VPC logs"
   type        = string
 }
-####### VPC######################
+####### VPC#####
 variable "vpc_cidr" {
   description = "The CIDR block for the VPC"
   type        = string
@@ -37,7 +37,7 @@ variable "public_subnets_ids" {
   description = "List of public subnet IDs for the container"
 }
 
-//ECS
+###ECS####
 
 variable "cluster_name" {
   type        = string
@@ -64,7 +64,7 @@ variable "vpc_id" {
   description = "VPC ID"
 }
 
-// ALB
+####ALB####
 
 variable "loadbalancer_name" {
   description = "The name of the load balancer"
@@ -104,3 +104,20 @@ variable "loadbalancer_listener_default_action_type" {
 #   description = "ARN of the ACM certificate for HTTPS listener"
 #   type        = string
 # }
+
+####R53_DNS####
+
+variable "hosted_zone_id" {
+  description = "Route 53 hosted zone ID"
+  type        = string
+}
+
+variable "alb_dns" {
+  description = "ALB DNS name to point to"
+  type        = string
+}
+
+variable "alb_zone_id" {
+  description = "ALB hosted zone ID"
+  type        = string
+}
