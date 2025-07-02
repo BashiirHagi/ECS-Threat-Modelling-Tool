@@ -18,7 +18,7 @@ module "ecs" {
   container_image = var.container_image
   container_port  = var.container_port
 
-  vpc_id          = var.vpc_id
+  vpc_id             = var.vpc_id
   public_subnets_ids = var.public_subnets_ids
 
   tags = {

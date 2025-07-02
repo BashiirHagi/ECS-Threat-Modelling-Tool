@@ -22,7 +22,7 @@ resource "aws_ecs_task_definition" "this" {
   ])
 }
 
-resource "aws_ecs_service" "this" {
+resource "aws_ecs_service" "this" { //
   name            = "${var.container_name}-service"
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.this.arn
@@ -31,22 +31,22 @@ resource "aws_ecs_service" "this" {
 
   network_configuration {
     subnets         = var.public_subnets_ids 
-    assign_public_ip = true //public access for ecs tasks 
-    security_groups  = [aws_security_group.ecs_tasks.id]
+    assign_public_ip = true //public access for ecs tasks with public IP
+    security_groups  = [aws_security_group.ecs_tasks.id] //
   }
 
   depends_on = [aws_ecs_cluster.this]
 }
 
-resource "aws_security_group" "ecs_tasks" {
-  name   = "${var.container_name}-sg"
+resource "aws_security_group" "ecs_tasks" { 
+  name   = "${var.container_name}-sg" //
   vpc_id = var.vpc_id
 
   ingress {
     from_port   = var.container_port
     to_port     = var.container_port
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"] //all traffic allowed for ingress traffic 
+    cidr_blocks = ["0.0.0.0/0"] //all traffic allowed for ingress traffic on port 3000
   }
 
   egress {
