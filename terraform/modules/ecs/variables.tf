@@ -33,6 +33,11 @@ variable "public_subnets_ids" {
   description = "List of private subnet IDs for the container"
 }
 
+variable "target_group_arn" {
+  description = "ALB target group arn to attach ECS services to"
+  type        = string
+}
+
 variable "tags" {
   type        = map(string)
   description = "Common tags"

@@ -27,12 +27,18 @@ resource "aws_ecs_service" "this" { //
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.this.arn
   launch_type     = "FARGATE"
-  desired_count   = 1
+  desired_count   = 2 //ECS tasks for HA
 
   network_configuration {
     subnets         = var.public_subnets_ids 
     assign_public_ip = true //public access for ecs tasks with public IP
     security_groups  = [aws_security_group.ecs_tasks.id] //
+  } 
+
+  load_balancer { 
+    target_group_arn = var.target_group_arn // ALB target for ecs service group arn
+    container_name   = var.container_name 
+    container_port   = 3000
   }
 
   depends_on = [aws_ecs_cluster.this]

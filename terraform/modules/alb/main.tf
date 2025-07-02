@@ -12,7 +12,6 @@ resource "aws_lb" "load_balancer" { //load balancer resource
 }
 
 //SG
-
 resource "aws_security_group" "alb_sg" { // security group for the ALB
   name        = "${var.environment}-alb-sg"
   description = "Allow HTTP traffic to the ALB"
@@ -35,10 +34,10 @@ resource "aws_security_group" "alb_sg" { // security group for the ALB
   # }
 
   egress {
-    description = "Allow all outbound traffic"
+    description = "Allow all outbound traffic" //all protocls and all hosts allowed
     from_port   = 0
     to_port     = 0
-    protocol    = "-1"
+    protocol    = "-1" 
     cidr_blocks = ["0.0.0.0/0"]
   }
 

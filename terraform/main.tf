@@ -11,12 +11,12 @@ module "vpc" {
 }
 
 module "ecs" {
-  source = "./modules/ecs"
-
-  cluster_name    = var.cluster_name
-  container_name  = var.container_name
-  container_image = var.container_image
-  container_port  = var.container_port
+  source           = "./modules/ecs"
+  target_group_arn = module.alb.ecs_target_group_arn
+  cluster_name     = var.cluster_name
+  container_name   = var.container_name
+  container_image  = var.container_image
+  container_port   = var.container_port
 
   vpc_id             = var.vpc_id
   public_subnets_ids = var.public_subnets_ids
