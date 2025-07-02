@@ -26,27 +26,22 @@ module "ecs" {
   }
 }
 
+module "alb" {
+  source                                    = "./modules/alb"
+  loadbalancer_name                         = var.loadbalancer_name
+  loadbalancer_internal                     = var.loadbalancer_internal
+  loadbalancer_type                         = var.loadbalancer_type
+  loadbalancer_subnets                      = var.loadbalancer_subnets
+  loadbalancer_enable_deletion_protection   = var.loadbalancer_enable_deletion_protection
+  loadbalancer_listener_default_action_type = var.loadbalancer_listener_default_action_type
+  environment                               = var.environment
+}
+
+
 # module "ecr" {
 #   source = "./modules/ecr"
 #   name   = "ecs-repo"
 #   tags   = var.tags
-# }
-
-# module "ecs" {
-#   source             = "./modules/ecs"
-#   cluster_name       = "ecs-cluster"
-#   vpc_id             = module.vpc.vpc_id
-#   private_subnets    = module.vpc.private_subnet_ids
-#   ecr_repo_url       = module.ecr.repository_url
-#   tags               = var.tags
-# }
-
-# module "elb" {
-#   source             = "./modules/elb"
-#   vpc_id             = module.vpc.vpc_id
-#   public_subnets     = module.vpc.public_subnet_ids
-#   target_group_port  = 80
-#   tags               = var.tags
 # }
 
 # module "rds" {
