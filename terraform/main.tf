@@ -39,18 +39,15 @@ module "alb" {
 }
 
 
+module "r53_dns" {
+  source         = "./modules/r53_dns"
+  hosted_zone_id = var.hosted_zone_id
+  alb_dns        = var.alb_dns
+  alb_zone_id    = var.alb_zone_id
+}
+
 # module "ecr" {
 #   source = "./modules/ecr"
 #   name   = "ecs-repo"
 #   tags   = var.tags
-# }
-
-# module "rds" {
-#   source             = "./modules/rds"
-#   vpc_id             = module.vpc.vpc_id
-#   private_subnets    = module.vpc.private_subnet_ids
-#   db_name            = var.db_name
-#   db_username        = var.db_username
-#   db_password        = var.db_password
-#   tags               = var.tags
 # }
