@@ -121,3 +121,14 @@ variable "alb_zone_id" {
   description = "ALB hosted zone ID"
   type        = string
 }
+
+####ECR####
+
+variable "ecr_name" {
+  type = string
+}
+
+variable "image_tag_mutability" {
+  type = string
+}
+

@@ -47,8 +47,8 @@ module "r53_dns" {
   alb_zone_id    = var.alb_zone_id
 }
 
-# module "ecr" {
-#   source = "./modules/ecr"
-#   name   = "ecs-repo"
-#   tags   = var.tags
-# }
+module "ecr" {
+  source               = "./modules/ecr"
+  ecr_name             = var.ecr_name
+  image_tag_mutability = var.image_tag_mutability
+}
