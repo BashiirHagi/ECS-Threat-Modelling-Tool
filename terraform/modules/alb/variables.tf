@@ -37,6 +37,11 @@ variable "loadbalancer_listener_default_action_type" {
   default     = "forward"
 }
 
+variable "certificate_arn" {
+  description = "ARN of the SSL certificate for ALB HTTPS listener"   
+  type        = string
+}
+
 variable "environment" {
   description = "Deployment environment name (e.g., dev, staging, prod)"
   type        = string

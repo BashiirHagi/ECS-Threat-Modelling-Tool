@@ -35,6 +35,7 @@ module "alb" {
   loadbalancer_subnets                      = var.loadbalancer_subnets
   loadbalancer_enable_deletion_protection   = var.loadbalancer_enable_deletion_protection
   loadbalancer_listener_default_action_type = var.loadbalancer_listener_default_action_type
+  certificate_arn                           = var.certificate_arn
   environment                               = var.environment
 }
 

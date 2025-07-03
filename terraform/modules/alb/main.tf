@@ -12,7 +12,7 @@ resource "aws_lb" "load_balancer" { //load balancer resource
 }
 
 //SG
-resource "aws_security_group" "alb_sg" { // security group for the ALB
+resource "aws_security_group" "alb_sg" {  //security group for the ALB
   name        = "${var.environment}-alb-sg"
   description = "Allow HTTP traffic to the ALB"
   vpc_id      = var.vpc_id
@@ -25,13 +25,13 @@ resource "aws_security_group" "alb_sg" { // security group for the ALB
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # ingress {
-  #   description = "Allow HTTPS from the internet"
-  #   from_port   = 443
-  #   to_port     = 443
-  #   protocol    = "tcp"
-  #   cidr_blocks = ["0.0.0.0/0"]
-  # }
+  ingress {
+    description = "Allow HTTPS from the internet"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   egress {
     description = "Allow all outbound traffic" //all protocls and all hosts allowed
@@ -48,7 +48,7 @@ resource "aws_security_group" "alb_sg" { // security group for the ALB
 
 
 #########load-balancers listeners#######
-resource "aws_lb_listener" "http_listener" { // listens for HTTP traffic on port 80
+resource "aws_lb_listener" "http_listener" {  //listens for HTTP traffic on port 80
   load_balancer_arn = aws_lb.load_balancer.arn
   port              = 80
   protocol          = "HTTP"
@@ -62,7 +62,7 @@ resource "aws_lb_listener" "http_listener" { // listens for HTTP traffic on port
   }
 }
 
-resource "aws_lb_target_group" "ecs_tg" { // target group for ECS tasks
+resource "aws_lb_target_group" "ecs_tg" { //target group for ECS tasks
   name        = "ecs-alb-tg"
   target_type = "ip"
   port        = 3000
@@ -70,17 +70,17 @@ resource "aws_lb_target_group" "ecs_tg" { // target group for ECS tasks
   vpc_id      = var.vpc_id
 }
 
-# resource "aws_lb_listener" "https_listener" {
-#   load_balancer_arn = aws_lb.load_balancer.arn
-#   port              = 443
-#   protocol          = "HTTPS"
-#   certificate_arn   = var.certificate_arn
+resource "aws_lb_listener" "https_listener" {  //listens for HTTPS traffic on ALB on port 443
+  load_balancer_arn = aws_lb.load_balancer.arn
+  port              = 443
+  protocol          = "HTTPS"
+  certificate_arn   = var.certificate_arn //SSL cert
 
-#   default_action {
-#     type             = var.loadbalancer_listener_default_action_type
-#     target_group_arn = aws_lb_target_group.alb_target_group.arn
-#   }
-#   tags = {
-#     Name = "${var.environment}-https-listener"
-#   }
-# }
+  default_action {
+    type             = var.loadbalancer_listener_default_action_type
+    target_group_arn = aws_lb_target_group.ecs_tg.arn
+  }
+  tags = {
+    Name = "${var.environment}-https-listener"
+  }
+}
