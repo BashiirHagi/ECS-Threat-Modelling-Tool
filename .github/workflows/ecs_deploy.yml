@@ -7,7 +7,7 @@ on:
       - feature/* # runs on any feature branch
 
 jobs:
-  deploy:
+  deploy: ## deploy job
     runs-on: ubuntu-latest
 
     steps:
