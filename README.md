@@ -15,6 +15,8 @@ The entire architecture is designed for high availability, scalability and secur
 
 ## Project Structure:
 
+```bash
+
 ECS-Threat-Modelling-Tool/
 ├── app/                           # Node.js application source code
 │   └── ...                        # App logic, routes, package.json etc.
@@ -37,5 +39,6 @@ ECS-Threat-Modelling-Tool/
 ├── AWS-ECS---GHA-2-0.png         # Architecture diagram
 ├── .gitignore                    # Git ignored files
 └── README.md                     # Project overview and instructions
+```
 
 ![Architecture Diagram](AWS-architecture.png)
