@@ -27,7 +27,7 @@ resource "aws_ecs_service" "this" { //
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.this.arn
   launch_type     = "FARGATE"
-  desired_count   = 4 //ECS tasks for HA
+  desired_count   = 2 //ECS tasks for HA
 
   network_configuration {
     subnets         = var.public_subnets_ids 
