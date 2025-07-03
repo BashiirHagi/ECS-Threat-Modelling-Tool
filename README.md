@@ -36,7 +36,7 @@ ECS-Threat-Modelling-Tool/
 ├── .github/workflows/            # GitHub Actions CI/CD workflows
 │   └── ecs_deploy.yml             # CI/CD pipeline to deploy infra/app
 │
-├── AWS-ECS---GHA-2-0.png         # Architecture diagram
+├── AWS-architectur.png         # Architecture diagram
 ├── .gitignore                    # Git ignored files
 └── README.md                     # Project overview and instructions
 ```
