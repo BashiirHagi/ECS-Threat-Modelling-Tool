@@ -2,7 +2,7 @@
 
 This project deploys a containerized Node.js web application on an AWS Elastic Container Service (ECS). The infrastructure is fully managed through Terraform modules, and deployments are automated through a GitHub Actions CI/CD pipeline. 
 
-The entire architecture is designed for high availability, scalability and security which is ideal for modern cloud-native application delivery.
+The entire architecture is designed for high availability, scalability and security which is ideal for modern cloud-native applications. 
 
 ## Key components include:
 	- ECS (Fargate) – for running containers without managing servers
@@ -43,3 +43,7 @@ ECS-Threat-Modelling-Tool/
 
 
 ![Architecture Diagram](AWS-architecture.png)
+
+AWS Elastic Contaner Service (ECS) - https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html
+
+
