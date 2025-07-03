@@ -13,4 +13,5 @@ The entire architecture is designed for scalability, repeatability, and simplici
 	- GitHub Actions – for automated provisioning and deployments
 	- S3 + DynamoDB – as Terraform remote backend and state lock management
 
+
 ![Architecture Diagram](AWS-architecture.png)
