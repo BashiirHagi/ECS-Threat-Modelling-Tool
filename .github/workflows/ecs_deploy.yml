@@ -9,6 +9,8 @@ on:
 jobs:
   deploy: ## deploy job
     runs-on: ubuntu-latest
+    env:
+      TF_LOG: DEBUG
 
     steps:
       - name: Checkout repo
