@@ -14,10 +14,6 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-# Terraform variable files containing sensitive data
-terraform.tfvars
-*.tfvars
-
 # CLI configuration files
 .terraformrc
 terraform.rc
