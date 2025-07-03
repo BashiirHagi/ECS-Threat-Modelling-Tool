@@ -1,5 +1,5 @@
 module "vpc" {
-  source             = "./modules/vpc" //relative path basd on location of the calling module main.tf 
+  source             = "./modules/vpc" //relative path basd on location of the calling module main.tf configs
   aws_region         = var.aws_region
   vpc_cidr           = var.vpc_cidr
   public_subnets     = var.public_subnets
