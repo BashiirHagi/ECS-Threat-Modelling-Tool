@@ -1,8 +1,8 @@
 # ECS-Threat-Modelling-Tool
 
-This project deploys a containerized Node.js web application on AWS using Elastic Container Service (ECS). The infrastructure is fully managed through Terraform modules, and deployments are automated via a GitHub Actions CI/CD pipeline. 
+This project deploys a containerized Node.js web application on an AWS Elastic Container Service (ECS). The infrastructure is fully managed through Terraform modules, and deployments are automated through a GitHub Actions CI/CD pipeline. 
 
-The entire architecture is designed for scalability, repeatability, and simplicity — ideal for modern cloud-native application delivery.
+The entire architecture is designed for high availability, scalability and security which is ideal for modern cloud-native application delivery.
 
 ## Key components include:
 	- ECS (Fargate) – for running containers without managing servers
@@ -13,5 +13,29 @@ The entire architecture is designed for scalability, repeatability, and simplici
 	- GitHub Actions – for automated provisioning and deployments
 	- S3 + DynamoDB – as Terraform remote backend and state lock management
 
+## Project Structure:
+
+ECS-Threat-Modelling-Tool/
+├── app/                           # Node.js application source code
+│   └── ...                        # App logic, routes, package.json etc.
+│
+├── terraform/                     # Infrastructure as Code (IaC) root folder
+│   ├── backend.tf                 # Terraform backend configuration (S3 + DynamoDB)
+│   ├── main.tf                    # Root Terraform configuration
+│   ├── variables.tf               # Input variable definitions
+│   ├── terraform.tfvars           # Actual variable values (env-specific)
+│   └── modules/                   # Reusable Terraform modules
+│       ├── alb/                   # Application Load Balancer module
+│       ├── ecr/                   # Elastic Container Registry module
+│       ├── ecs/                   # ECS service + task definition module
+│       ├── r53_dns/               # Route 53 DNS + ACM module
+│       └── vpc/                   # VPC, subnets, and networking module
+│
+├── .github/workflows/            # GitHub Actions CI/CD workflows
+│   └── ecs_deploy.yml             # CI/CD pipeline to deploy infra/app
+│
+├── AWS-ECS---GHA-2-0.png         # Architecture diagram
+├── .gitignore                    # Git ignored files
+└── README.md                     # Project overview and instructions
 
 ![Architecture Diagram](AWS-architecture.png)
